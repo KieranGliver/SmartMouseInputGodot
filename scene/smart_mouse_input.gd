@@ -16,13 +16,13 @@ var is_drag: bool = false
 var click_start_time: float = 0.0
 var click_event: InputEvent
 
-signal mouse_down(event)
-signal mouse_up(event)
-signal mouse_press(event)
+signal mouse_down(event:InputEventMouse)
+signal mouse_up(event:InputEventMouse)
+signal mouse_press(event:InputEventMouse)
 
-signal double_click(event)
-signal long_click(event)
-signal drag(event)
+signal double_click(event:InputEventMouse)
+signal long_click(event:InputEventMouse)
+signal drag(event:InputEventMouse)
 
 
 func _process(_delta):
