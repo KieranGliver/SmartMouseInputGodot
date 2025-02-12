@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cikj0dc10bl3j"]
+
+[ext_resource type="PackedScene" uid="uid://dlcoapbwymdi6" path="res://scene/smart_mouse_input.tscn" id="1_1eobl"]
+[ext_resource type="Texture2D" uid="uid://wisdlc6qtc43" path="res://icon.svg" id="3_sls58"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ev4fk"]
+size = Vector2(128, 128)
+
+[node name="SmartMouseExample" type="Node2D"]
+
+[node name="SmartMouseInput" parent="." instance=ExtResource("1_1eobl")]
+position = Vector2(568, 300)
+mode = "DEBUG"
+
+[node name="CollisionShape2D" parent="SmartMouseInput" index="0"]
+shape = SubResource("RectangleShape2D_ev4fk")
+
+[node name="Sprite2D" type="Sprite2D" parent="SmartMouseInput"]
+texture = ExtResource("3_sls58")
+
+[editable path="SmartMouseInput"]
