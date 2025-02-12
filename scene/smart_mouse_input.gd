@@ -16,13 +16,13 @@ var is_drag: bool = false
 var click_start_time: float = 0.0
 var click_event: InputEvent
 
-signal mouse_down(event:InputEventMouse)
-signal mouse_up(event:InputEventMouse)
-signal mouse_press(event:InputEventMouse)
+signal mouse_down(event:InputEventMouseButton)
+signal mouse_up(event:InputEventMouseButton)
+signal mouse_press(event:InputEventMouseButton)
 
-signal double_click(event:InputEventMouse)
-signal long_click(event:InputEventMouse)
-signal drag(event:InputEventMouse)
+signal double_click(event:InputEventMouseButton)
+signal long_click(event:InputEventMouseButton)
+signal drag(event:InputEventMouseMotion)
 
 
 func _process(_delta):
@@ -78,8 +78,10 @@ func _unhandled_input(event):
 					
 					if mode == "DEBUG":
 						print("Click Drag on: " + name)
-					
-					emit_signal("drag", event)
+					var drag_event = event.duplicate()
+					drag_event.global_position = click_event.global_position
+					drag_event.relative = click_event.global_position.distance_to(event.global_position)
+					emit_signal("drag", drag_event)
 					
 					is_drag = true
 
